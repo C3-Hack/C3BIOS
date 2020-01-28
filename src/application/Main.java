@@ -22,7 +22,7 @@ public class Main extends Application {
 			stage = primaryStage;
 
 			// ページを表示する
-			setPage("TopPage.fxml");
+			setPage("TopPage.fxml"); // TopPageを表示する
 			stage.setResizable(false); // ウインドウサイズ変更不可に設定
 			stage.show();
 		} catch(Exception e) {
@@ -35,6 +35,7 @@ public class Main extends Application {
 	}
 
 	// 表示するページを設定する
+	// 引数fxml : fxmlのファイル名
 	public void setPage(String fxml) {
 		try {
 			root = (BorderPane)FXMLLoader.load(getClass().getResource(fxml));

@@ -41,7 +41,7 @@
                   <Font name="Malgun Gothic Bold" size="36.0" />
                </font>
             </Label>
-            <Label layoutX="460.0" layoutY="25.0" text="1/21 12:34">
+            <Label fx:id="label_time" layoutX="460.0" layoutY="25.0" text="1/21 12:34">
                <font>
                   <Font name="MS Gothic" size="24.0" />
                </font>

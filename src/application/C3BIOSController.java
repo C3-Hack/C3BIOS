@@ -1,5 +1,7 @@
 package application;
 
+import java.time.LocalDateTime;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -7,33 +9,35 @@ import javafx.scene.control.Label;
 public class C3BIOSController {
 
 	@FXML
-	private Label label_timer;
+	private Label label_time;
 
 	// 入室ボタンクリック時
 	@FXML
-	protected void onInButtonClick(ActionEvent event) {
+	void onInButtonClick(ActionEvent event) {
 		Main.getInstance().setPage("InPage.fxml");
-		label_timer.setText("入室ボタン押した");
+		System.out.println("debug1 "+label_time.getText()); // setText前．label_text, 表示共に "1/21 12:34"
+		label_time.setText(LocalDateTime.now().toString()); // 現在時刻を表示
+		System.out.println("debug2 "+label_time.getText()); // setText後．label_text は変わっているが，表示は "1/21 12:34" のまま
 	}
 
 	// 退室ボタンクリック時
 	@FXML
-	protected void onOutButtonClick(ActionEvent event) {
+	void onOutButtonClick(ActionEvent event) {
 		Main.getInstance().setPage("OutPage.fxml");
-		label_timer.setText("退室ボタン押した");
+		label_time.setText("退室");
 	}
 
 	// 履歴ボタンクリック時
 	@FXML
-	protected void onHistoryButtonClick(ActionEvent event) {
+	void onHistoryButtonClick(ActionEvent event) {
 		System.out.println("debug historyButton");
 	}
 
 	// トップに戻るボタンクリック時
 	@FXML
-	protected void onReturnButtonClick(ActionEvent event) {
+	void onReturnButtonClick(ActionEvent event) {
 		Main.getInstance().setPage("TopPage.fxml");
-		label_timer.setText("トップに戻るボタン押した");
+		label_time.setText("トップ");
 	}
 
 }
