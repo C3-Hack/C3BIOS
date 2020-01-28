@@ -16,7 +16,7 @@ public class C3BIOSController {
 	void onInButtonClick(ActionEvent event) {
 		Main.getInstance().setPage("InPage.fxml");
 		System.out.println("debug1 "+label_time.getText()); // setText前．label_text, 表示共に "1/21 12:34"
-		label_time.setText(LocalDateTime.now().toString()); // 現在時刻を表示
+		label_time.setText(LocalDateTime.now().toString()); // 現在時刻を表示する
 		System.out.println("debug2 "+label_time.getText()); // setText後．label_text は変わっているが，表示は "1/21 12:34" のまま
 	}
 
