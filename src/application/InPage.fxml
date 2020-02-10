@@ -53,7 +53,7 @@
    <bottom>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="135.0" layoutY="70.0" mnemonicParsing="false" onAction="#onReturnButtonClick" prefHeight="60.0" text="トップに戻る">
+            <Button layoutX="135.0" layoutY="70.0" mnemonicParsing="false" onAction="#onReturnButtonClick" prefHeight="60.0" prefWidth="220.0" text="トップに戻る">
                <font>
                   <Font name="MS Gothic" size="28.0" />
                </font>
@@ -63,7 +63,7 @@
                   <Font name="MS Gothic" size="28.0" />
                </font>
             </Label>
-            <Button layoutX="382.0" layoutY="70.0" mnemonicParsing="false" onAction="#onHistoryButtonClick" prefHeight="60.0" prefWidth="100.0" text="履歴">
+            <Button layoutX="380.0" layoutY="70.0" mnemonicParsing="false" onAction="#onHistoryButtonClick" prefHeight="60.0" prefWidth="100.0" text="履歴">
                <font>
                   <Font name="MS Gothic" size="28.0" />
                </font>

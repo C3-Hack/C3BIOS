@@ -12,7 +12,6 @@ public class Main extends Application {
 	private Stage stage;
 	private Scene topPage;
 	private Scene inPage;
-	private Scene outPage;
 	private final int WINDOW_WIDTH = 600;  // ウインドウの幅
 	private final int WINDOW_HEIGHT = 600; // ウインドウの高さ
 
@@ -23,7 +22,6 @@ public class Main extends Application {
 			stage = primaryStage;
 			topPage = new Scene(FXMLLoader.load(getClass().getResource("TopPage.fxml")), WINDOW_WIDTH, WINDOW_HEIGHT);
 			inPage = new Scene(FXMLLoader.load(getClass().getResource("InPage.fxml")), WINDOW_WIDTH, WINDOW_HEIGHT);
-			outPage = new Scene(FXMLLoader.load(getClass().getResource("OutPage.fxml")), WINDOW_WIDTH, WINDOW_HEIGHT);
 
 			// ページを表示する
 			setPage("TopPage.fxml"); // TopPageを表示する
@@ -51,10 +49,6 @@ public class Main extends Application {
 
 			case "InPage.fxml":
 				stage.setScene(inPage);
-				break;
-
-			case "OutPage.fxml":
-				stage.setScene(outPage);
 				break;
 
 			default:

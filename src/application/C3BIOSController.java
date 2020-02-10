@@ -30,12 +30,6 @@ public class C3BIOSController {
 		Main.getInstance().setPage("InPage.fxml");
 	}
 
-	// 退室ボタンクリック時
-	@FXML
-	void onOutButtonClick(ActionEvent event) {
-		Main.getInstance().setPage("OutPage.fxml");
-	}
-
 	// 履歴ボタンクリック時
 	@FXML
 	void onHistoryButtonClick(ActionEvent event) {
@@ -51,7 +45,7 @@ public class C3BIOSController {
 	// CSV書き込みテスト
 	@FXML
 	void writeTest(ActionEvent event) {
-		writeCSV("InOutTime.csv", "00 00 00 00 00 00 00 00", getTime("yyMMdd"), getTime("HH:mm"));
+		writeCSV("InOutTime.csv", "00 00 00 00 00 00 00 00", "182C1000", getTime("yyMMdd"), getTime("HH:mm"));
 	}
 
 	// 時計を動かす
@@ -77,21 +71,35 @@ public class C3BIOSController {
 	}
 
 	// CSV書き出し
-	// 引数：ファイル名，ID，日付，時間
-	void writeCSV(String fileName, String id, String date, String time) {
+	// 引数：ファイル名，カードのIDm，学籍番号，日付，時間
+	// 学籍番号の C は 3 に置き換える．
+	void writeCSV(String fileName, String cardID, String studentID, String date, String time) {
 		try{
-			File dir = new File("CSV");
+			String dirName = "CSV";
+			File dir = new File(dirName);
+
 			// CSVディレクトリが無い場合
 			if(!dir.exists()) {
 				dir.mkdir(); // CSVディレクトリを作成
 			}
-			String filepath = "CSV\\" + fileName; // csvファイルまでの相対パス
+
+			String filepath = dirName + "\\" + fileName; // csvファイルまでの相対パス
             FileWriter fw = new FileWriter(filepath, true); // ファイルに追記モードで書き込みを行う
-            fw.write(id + "," + date + "," + time + "\n"); // ファイルに書き込み
+            fw.write(cardID + "," + replaceAlphabetToInteger(studentID) + "," + date + "," + time + "\n"); // ファイルに書き込み
             fw.close(); // ファイルを閉じる
         } catch(IOException e){
             e.printStackTrace();
         }
+	}
+
+	// 学籍番号のアルファベットを数字に置き換え
+	int replaceAlphabetToInteger(String studentID) {
+		studentID = studentID.replace("A", "1"); // A を 1 に置き換え
+		studentID = studentID.replace("B", "2"); // B を 2 に置き換え
+		studentID = studentID.replace("C", "3"); // C を 3 に置き換え
+		studentID = studentID.replace("D", "4"); // D を 4 に置き換え
+		studentID = studentID.replace("E", "5"); // E を 5 に置き換え
+		return Integer.parseInt(studentID);
 	}
 
 }
