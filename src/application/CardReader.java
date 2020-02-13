@@ -52,4 +52,12 @@ public class CardReader implements Runnable {
             }
         }
     }
+
+    public String getIDm() {
+    	return IDm;
+    }
+
+    public void setIDm(String str) {
+    	IDm = str;
+    }
 }

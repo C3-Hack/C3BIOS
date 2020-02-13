@@ -17,21 +17,23 @@ import javafx.util.Duration;
 public class C3BIOSController {
 
 	@FXML Label label_clock;
-	//@FXML Label label_IDm;
-	//CardReader cardReader = new CardReader();
+	@FXML Label label_IDm;
+	CardReader cardReader = new CardReader();
 
 	// 最初に呼ばれる
 	public void initialize() {
 		label_clock.setText(getTime("MM/dd HH:mm"));
 		runClock(label_clock);
-		Thread thread = new Thread(new CardReader());
+		Thread thread = new Thread(cardReader);
 		thread.start();
+		setIDmLabel(label_IDm);
 	}
 
 	// 入室ボタンクリック時
 	@FXML
 	void onInButtonClick(ActionEvent event) {
 		Main.getInstance().setPage("InPage.fxml");
+		System.out.println("入室ボタンクリック時のIDm : " + cardReader.getIDm());
 	}
 
 	// 履歴ボタンクリック時
@@ -43,6 +45,7 @@ public class C3BIOSController {
 	// トップに戻るボタンクリック時
 	@FXML
 	void onReturnButtonClick(ActionEvent event) {
+		cardReader.setIDm(""); // 読み取ったIDmをリセット
 		Main.getInstance().setPage("TopPage.fxml");
 	}
 
@@ -105,6 +108,20 @@ public class C3BIOSController {
 		studentID = studentID.replace("D", "4"); // D を 4 に置き換え
 		studentID = studentID.replace("E", "5"); // E を 5 に置き換え
 		return Integer.parseInt(studentID);
+	}
+
+	// ラベルにIDmを表示
+	void setIDmLabel(Label label_IDm) {
+		Timeline timeline = new Timeline(new KeyFrame(Duration.millis(100), new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				// IDm表示
+				label_IDm.setText(cardReader.getIDm());
+			}
+		}));
+
+		timeline.setCycleCount(Timeline.INDEFINITE); // 無限に繰り返す
+		timeline.play();
 	}
 
 }
