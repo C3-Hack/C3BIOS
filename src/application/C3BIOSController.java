@@ -17,11 +17,15 @@ import javafx.util.Duration;
 public class C3BIOSController {
 
 	@FXML Label label_clock;
+	//@FXML Label label_IDm;
+	//CardReader cardReader = new CardReader();
 
 	// 最初に呼ばれる
 	public void initialize() {
 		label_clock.setText(getTime("MM/dd HH:mm"));
 		runClock(label_clock);
+		Thread thread = new Thread(new CardReader());
+		thread.start();
 	}
 
 	// 入室ボタンクリック時
@@ -49,13 +53,13 @@ public class C3BIOSController {
 	}
 
 	// 時計を動かす
-	void runClock(Label label) {
+	void runClock(Label label_clock) {
 		// 100ミリ秒ごとに更新する
 		Timeline clock = new Timeline(new KeyFrame(Duration.millis(100), new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
 				// MM/dd HH:mm:ss の形で時刻を表示
-				label.setText(getTime("MM/dd HH:mm"));
+				label_clock.setText(getTime("MM/dd HH:mm"));
 			}
 		}));
 
@@ -93,6 +97,7 @@ public class C3BIOSController {
 	}
 
 	// 学籍番号のアルファベットを数字に置き換え
+	// 一応 A から E まで変換しているが，C だけでいいかも
 	int replaceAlphabetToInteger(String studentID) {
 		studentID = studentID.replace("A", "1"); // A を 1 に置き換え
 		studentID = studentID.replace("B", "2"); // B を 2 に置き換え

@@ -15,7 +15,7 @@
                   <Font name="MS Gothic" size="28.0" />
                </font>
             </Label>
-            <Label layoutX="190.0" layoutY="49.0" text="00 00 00 00 00 00 00 00">
+            <Label fx:id="label_IDm" layoutX="190.0" layoutY="49.0" text="00 00 00 00 00 00 00 00">
                <font>
                   <Font name="MS Gothic" size="28.0" />
                </font>
