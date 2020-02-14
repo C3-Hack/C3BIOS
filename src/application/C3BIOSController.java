@@ -35,7 +35,6 @@ public class C3BIOSController {
 	void onInButtonClick(ActionEvent event) {
 		writeCSV("InOutTime.csv", IDm, "182C1000", getTime("yyMMdd"), getTime("HH:mm")); // CSVに書き込み
 		Main.getInstance().setPage("InPage.fxml");
-		System.out.println("入室ボタンクリック時のIDm : " + IDm);
 	}
 
 	// 履歴ボタンクリック時
@@ -49,12 +48,6 @@ public class C3BIOSController {
 	void onReturnButtonClick(ActionEvent event) {
 		//cardReader.setIDm(""); // 読み取ったIDmをリセット
 		Main.getInstance().setPage("TopPage.fxml");
-	}
-
-	// CSV書き込みテスト
-	@FXML
-	void writeTest(ActionEvent event) {
-		writeCSV("InOutTime.csv", IDm, "182C1000", getTime("yyMMdd"), getTime("HH:mm"));
 	}
 
 	// 時計を動かす
