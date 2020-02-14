@@ -18,7 +18,8 @@ public class C3BIOSController {
 
 	@FXML Label label_clock;
 	@FXML Label label_IDm;
-	CardReader cardReader = new CardReader();
+	private CardReader cardReader = new CardReader();
+	private String IDm = "";
 
 	// 最初に呼ばれる
 	public void initialize() {
@@ -32,8 +33,9 @@ public class C3BIOSController {
 	// 入室ボタンクリック時
 	@FXML
 	void onInButtonClick(ActionEvent event) {
+		writeCSV("InOutTime.csv", IDm, "182C1000", getTime("yyMMdd"), getTime("HH:mm")); // CSVに書き込み
 		Main.getInstance().setPage("InPage.fxml");
-		System.out.println("入室ボタンクリック時のIDm : " + cardReader.getIDm());
+		System.out.println("入室ボタンクリック時のIDm : " + IDm);
 	}
 
 	// 履歴ボタンクリック時
@@ -45,14 +47,14 @@ public class C3BIOSController {
 	// トップに戻るボタンクリック時
 	@FXML
 	void onReturnButtonClick(ActionEvent event) {
-		cardReader.setIDm(""); // 読み取ったIDmをリセット
+		//cardReader.setIDm(""); // 読み取ったIDmをリセット
 		Main.getInstance().setPage("TopPage.fxml");
 	}
 
 	// CSV書き込みテスト
 	@FXML
 	void writeTest(ActionEvent event) {
-		writeCSV("InOutTime.csv", "00 00 00 00 00 00 00 00", "182C1000", getTime("yyMMdd"), getTime("HH:mm"));
+		writeCSV("InOutTime.csv", IDm, "182C1000", getTime("yyMMdd"), getTime("HH:mm"));
 	}
 
 	// 時計を動かす
@@ -99,7 +101,7 @@ public class C3BIOSController {
         }
 	}
 
-	// 学籍番号のアルファベットを数字に置き換え
+	// 学籍番号のアルファベットを数字に置き換えて整数を返す
 	// 一応 A から E まで変換しているが，C だけでいいかも
 	int replaceAlphabetToInteger(String studentID) {
 		studentID = studentID.replace("A", "1"); // A を 1 に置き換え
@@ -115,8 +117,9 @@ public class C3BIOSController {
 		Timeline timeline = new Timeline(new KeyFrame(Duration.millis(100), new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
+				IDm = cardReader.getIDm();
 				// IDm表示
-				label_IDm.setText(cardReader.getIDm());
+				label_IDm.setText(IDm);
 			}
 		}));
 
