@@ -16,8 +16,9 @@ import javafx.util.Duration;
 
 public class C3BIOSController {
 
-	@FXML Label label_clock;
-	@FXML Label label_IDm;
+	@FXML private Label label_clock;
+	@FXML private Label label_IDm;
+	@FXML private Label label_message;
 	private CardReader cardReader = new CardReader();
 	private String IDm = "";
 
@@ -27,7 +28,7 @@ public class C3BIOSController {
 		runClock(label_clock);
 		Thread thread = new Thread(cardReader);
 		thread.start();
-		setIDmLabel(label_IDm);
+		setIDmLabel(label_IDm, label_message);
 	}
 
 	// 入室ボタンクリック時
@@ -107,13 +108,20 @@ public class C3BIOSController {
 	}
 
 	// ラベルにIDmを表示
-	void setIDmLabel(Label label_IDm) {
+	// メッセージを変更するため，メッセージ用のラベルも渡している．
+	void setIDmLabel(Label label_IDm, Label label_message) {
 		Timeline timeline = new Timeline(new KeyFrame(Duration.millis(100), new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
 				IDm = cardReader.getIDm();
 				// IDm表示
 				label_IDm.setText(IDm);
+				// IDmを読み取ったらメッセージ変更
+				if(IDm == "") {
+					label_message.setText("カードをタッチしてください");
+				} else {
+					label_message.setText("入室ボタンをクリックしてください");
+				}
 			}
 		}));
 
