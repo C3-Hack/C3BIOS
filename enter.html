@@ -6,12 +6,78 @@
   </head>
   <body>
     <script>
-      var number = prompt("学籍番号を入力してください");
 
-			var handlename =prompt("ハンドルネームを入力してください");
-      document.write(number);
+    function getCSV() {
+      var req = new XMLHttpRequest();
+      req.open('get', 'menber.csv', true);
+      req.send(null);
+      req.onload = function() {
+        setCSV(req.responseText);
+      };
+    }
+    function setCSV(str) {
+      var data = [];
+      var dataArr;
+      //var r = document.getElementById('r');
+      var tmp = str.split('\n');
+      tmp.forEach(x => {
+        dataArr = x.split(',');
+        if (dataArr[0]) {
+          data.push(dataArr.map(x => x.trim()));
+        }
+      });
 
-			document.write(handlename);
+      alert('lplplp');
+    }
+    getCSV();
+
+
+
+      flag1=1
+      flag2=1
+
+      while(flag1==1&&flag2==1){
+
+        var number = prompt("学籍番号を入力してください");
+
+			  var handlename =prompt("ハンドルネームを入力してください");
+
+        //登録されているか確認
+
+        for(j=0;result[j][1]!=null;++j){
+
+          //未登録の学籍番号
+
+
+          if(number!=result[j][0]){
+            flag1=0
+          }
+
+          //登録済みの学籍番号
+
+          else{
+            alert('登録済みの学籍番号です');
+          }
+          //未登録のハンドルネーム
+
+          if(handlename!=result[j][1]){
+            flag2=0
+          }
+
+          //登録済みのハンドルネーム
+
+          else{
+            alert('登録済みのハンドルネームです');
+          }
+        }
+
+      }
+
+      number1=number+','
+
+      document.write(number1);
+
+      document.write(handlename+"<br>\n");
     </script>
   </body>
 </html>
