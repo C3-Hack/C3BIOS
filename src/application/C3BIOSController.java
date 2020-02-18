@@ -34,6 +34,7 @@ public class C3BIOSController {
 	@FXML
 	void onInButtonClick(ActionEvent event) {
 		writeCSV("InOutTime.csv", IDm, "182C1000", getTime("yyMMdd"), getTime("HH:mm")); // CSVに書き込み
+		cardReader.setIDm(""); // 読み取ったIDmをリセット
 		Main.getInstance().setPage("InPage.fxml");
 	}
 
@@ -46,7 +47,7 @@ public class C3BIOSController {
 	// トップに戻るボタンクリック時
 	@FXML
 	void onReturnButtonClick(ActionEvent event) {
-		//cardReader.setIDm(""); // 読み取ったIDmをリセット
+		cardReader.setIDm(""); // 読み取ったIDmをリセット
 		Main.getInstance().setPage("TopPage.fxml");
 	}
 
