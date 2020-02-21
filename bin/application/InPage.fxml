@@ -46,6 +46,7 @@
                   <Font name="MS Gothic" size="24.0" />
                </font>
             </Label>
+            <Label fx:id="label_message" disable="true" text="NPE回避用のラベル" visible="false" />
          </children>
       </Pane>
    </top>
