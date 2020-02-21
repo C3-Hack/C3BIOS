@@ -62,7 +62,7 @@
                   <Font name="MS Gothic" size="28.0" />
                </font>
             </Button>
-            <Label fx:id="label_info" alignment="CENTER" layoutX="75.0" layoutY="14.0" prefWidth="450.0" text="カードをタッチしてください" textAlignment="CENTER">
+            <Label fx:id="label_message" alignment="CENTER" layoutX="75.0" layoutY="14.0" prefWidth="450.0" text="カードをタッチしてください" textAlignment="CENTER">
                <font>
                   <Font name="MS Gothic" size="28.0" />
                </font>

@@ -34,9 +34,13 @@ public class C3BIOSController {
 	// 入室ボタンクリック時
 	@FXML
 	void onInButtonClick(ActionEvent event) {
-		writeCSV("InOutTime.csv", IDm, "182C1000", getTime("yyMMdd"), getTime("HH:mm")); // CSVに書き込み
-		cardReader.setIDm(""); // 読み取ったIDmをリセット
-		Main.getInstance().setPage("InPage.fxml");
+		if(IDm == "") {
+			Main.getInstance().callErrorWindow(); // エラーウィンドウ呼び出し
+		} else {
+			writeCSV("InOutTime.csv", IDm, "182C1000", getTime("yyMMdd"), getTime("HH:mm")); // CSVに書き込み
+			cardReader.setIDm(""); // 読み取ったIDmをリセット
+			Main.getInstance().setPage("InPage.fxml");
+		}
 	}
 
 	// 履歴ボタンクリック時
