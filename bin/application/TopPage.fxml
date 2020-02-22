@@ -15,7 +15,7 @@
                   <Font name="MS Gothic" size="28.0" />
                </font>
             </Label>
-            <Label layoutX="190.0" layoutY="49.0" text="00 00 00 00 00 00 00 00">
+            <Label fx:id="label_IDm" layoutX="190.0" layoutY="49.0">
                <font>
                   <Font name="MS Gothic" size="28.0" />
                </font>
@@ -41,7 +41,7 @@
                   <Font name="Malgun Gothic Bold" size="36.0" />
                </font>
             </Label>
-            <Label fx:id="label_clock" layoutX="420.0" layoutY="25.0">
+            <Label fx:id="label_clock" layoutX="440.0" layoutY="25.0">
                <font>
                   <Font name="MS Gothic" size="24.0" />
                </font>
@@ -52,22 +52,17 @@
    <bottom>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="118.0" layoutY="70.0" mnemonicParsing="false" onAction="#onInButtonClick" prefHeight="60.0" prefWidth="100.0" text="入室">
+            <Button layoutX="135.0" layoutY="70.0" mnemonicParsing="false" onAction="#onInButtonClick" prefHeight="60.0" prefWidth="220.0" text="入室">
                <font>
                   <Font name="MS Gothic" size="28.0" />
                </font>
             </Button>
-            <Button layoutX="250.0" layoutY="70.0" mnemonicParsing="false" onAction="#onOutButtonClick" prefHeight="60.0" prefWidth="100.0" text="退室">
+            <Button layoutX="380.0" layoutY="70.0" mnemonicParsing="false" onAction="#onHistoryButtonClick" prefHeight="60.0" prefWidth="100.0" text="履歴">
                <font>
                   <Font name="MS Gothic" size="28.0" />
                </font>
             </Button>
-            <Button layoutX="382.0" layoutY="70.0" mnemonicParsing="false" onAction="#onHistoryButtonClick" prefHeight="60.0" prefWidth="100.0" text="履歴">
-               <font>
-                  <Font name="MS Gothic" size="28.0" />
-               </font>
-            </Button>
-            <Label layoutX="118.0" layoutY="14.0" text="カードをタッチしてください">
+            <Label fx:id="label_message" alignment="CENTER" layoutX="75.0" layoutY="14.0" prefWidth="450.0" text="カードをタッチしてください" textAlignment="CENTER">
                <font>
                   <Font name="MS Gothic" size="28.0" />
                </font>
