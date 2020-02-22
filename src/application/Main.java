@@ -71,7 +71,4 @@ public class Main extends Application {
 		return main_class;
 	}
 
-
-
-
 }
