@@ -5,7 +5,6 @@ import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
 
@@ -14,7 +13,6 @@ public class C3BIOSController {
 	@FXML private Label label_clock;
 	@FXML private Label label_IDm;
 	@FXML private Label label_message;
-	@FXML private Button button_reread;
 	private CardReader cardReader = new CardReader();
 	private Utilities utilities = new Utilities();
 	private String IDm = "";
@@ -52,12 +50,6 @@ public class C3BIOSController {
 	void onReturnButtonClick(ActionEvent event) {
 		cardReader.setIDm(""); // 読み取ったIDmをリセット
 		Main.getInstance().setPage("TopPage.fxml");
-	}
-
-	// エラーウィンドウにて「読み直す」ボタンをクリックしたとき
-	@FXML
-	void onRereadButtonClick(ActionEvent event) {
-		button_reread.getScene().getWindow().hide(); // ウィンドウを非表示にする
 	}
 
 	// ラベルにIDmを表示

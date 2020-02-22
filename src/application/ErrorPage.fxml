@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="application.C3BIOSController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="application.ErrorPageController">
    <top>
       <Pane prefHeight="100.0" prefWidth="400.0" BorderPane.alignment="CENTER">
          <children>
@@ -15,9 +15,6 @@
                   <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <Label fx:id="label_clock" disable="true" text="NPE回避用のラベル(clock)" visible="false" />
-            <Label fx:id="label_message" disable="true" text="NPE回避用のラベル(message)" visible="false" />
-            <Label fx:id="label_IDm" disable="true" text="NPE回避用ラベル(IDm)" visible="false" />
          </children>
       </Pane>
    </top>

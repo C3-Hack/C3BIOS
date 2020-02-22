@@ -13,7 +13,7 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
 
-public class Utilities{
+public class Utilities {
 
 	// 時計を動かす
 	// 引数：時計のラベル
