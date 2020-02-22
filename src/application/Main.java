@@ -66,9 +66,9 @@ public class Main extends Application {
 	void callErrorWindow(){
 		Stage errorStage = new Stage();
 		errorStage.initModality(Modality.APPLICATION_MODAL); // モーダルに設定
-		errorStage.initOwner(stage);
+		errorStage.initOwner(stage); // 親ウィンドウの設定？
 		errorStage.setScene(errorPage);
-		errorStage.setResizable(false);
+		errorStage.setResizable(false); // ウィンドウサイズ変更不可に設定
 		errorStage.show();
 	}
 
