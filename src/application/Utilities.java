@@ -39,9 +39,9 @@ public class Utilities {
 	}
 
 	// CSV書き出し
-	// 引数：ファイル名，カードのIDm，学籍番号，日付，時間
+	// 引数：ファイル名，カードのIDm，学籍番号，利用者の名前，日付，時間
 	// 学籍番号の C は 3 に置き換える．
-	void writeCSV(String fileName, String cardID, String studentID, String date, String time) {
+	void writeCSV(String fileName, String cardID, String studentID, String userName, String date, String time) {
 		try{
 			String dirName = "CSV";
 			File dir = new File(dirName);
@@ -53,7 +53,7 @@ public class Utilities {
 
 			String filepath = dirName + "\\" + fileName; // csvファイルまでの相対パス
             FileWriter fw = new FileWriter(filepath, true); // ファイルに追記モードで書き込みを行う
-            fw.write(cardID + "," + replaceAlphabetToInteger(studentID) + "," + date + "," + time + "\n"); // ファイルに書き込み
+            fw.write(cardID + "," + replaceAlphabetToInteger(studentID) + "," + userName + "," + date + "," + time + "\n"); // ファイルに書き込み
             fw.close(); // ファイルを閉じる
         } catch(IOException e){
             e.printStackTrace();

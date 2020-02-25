@@ -33,7 +33,7 @@ public class TopPageController {
 		if(topPageIDm == "") {
 			Main.getInstance().callErrorWindow(); // エラーウィンドウ呼び出し
 		} else {
-			utilities.writeCSV("InOutTime.csv", topPageIDm, "182C1000", utilities.getTime("yyMMdd"), utilities.getTime("HH:mm")); // CSVに書き込み
+			utilities.writeCSV("InOutTime.csv", topPageIDm, "182C1000", "ほげほげ太郎", utilities.getTime("yyMMdd"), utilities.getTime("HH:mm")); // CSVに書き込み
 			cardReader.setIDm(""); // 読み取ったIDmをリセット
 			Main.getInstance().setPage("InPage.fxml");
 		}
