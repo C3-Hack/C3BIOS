@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="500.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="application.InputNamePageController">
    <top>
       <Pane prefHeight="100.0" prefWidth="500.0" BorderPane.alignment="CENTER">
          <children>
@@ -23,17 +22,17 @@
    <center>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <TextField layoutX="60.0" layoutY="190.0" prefHeight="50.0" prefWidth="265.0" promptText="ここに名前を入力">
+            <TextField fx:id="textField_name" layoutX="60.0" layoutY="190.0" prefHeight="50.0" prefWidth="265.0" promptText="ここに名前を入力">
                <font>
                   <Font name="MS Gothic" size="24.0" />
                </font>
             </TextField>
-            <Label layoutX="58.0" layoutY="40.0" text="スキャンしたIDと入力された名前で&#10;今回のみ入室します．&#10;登録してね！">
+            <Label layoutX="58.0" layoutY="40.0" text="スキャンしたIDと入力された名前で&#10;今回のみ入室します．&#10;毎回名前を入力するのが面倒な人は&#10;別途登録してね！">
                <font>
                   <Font name="MS Gothic" size="24.0" />
                </font>
             </Label>
-            <Button layoutX="360.0" layoutY="190.0" mnemonicParsing="false" prefHeight="50.0" text="入室">
+            <Button layoutX="360.0" layoutY="190.0" mnemonicParsing="false" onAction="#onInButtonInErrorWindowClick" prefHeight="50.0" text="入室">
                <font>
                   <Font name="MS Gothic" size="24.0" />
                </font>
