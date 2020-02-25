@@ -10,61 +10,13 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
 
-public class C3BIOSController {
-
-	@FXML private Label label_clock;
-	@FXML private Label label_IDm;
-	@FXML private Label label_message;
-	@FXML private Button button_reread;
-	private CardReader cardReader = new CardReader();
-	private String IDm = "";
-
-	// 最初に呼ばれる
-	public void initialize() {
-		label_clock.setText(getTime("MM/dd HH:mm"));
-		runClock(label_clock);
-		Thread thread = new Thread(cardReader);
-		thread.start();
-		setIDmLabel(label_IDm, label_message);
-	}
-
-	// 入室ボタンクリック時
-	@FXML
-	void onInButtonClick(ActionEvent event) {
-		if(IDm == "") {
-			Main.getInstance().callErrorWindow(); // エラーウィンドウ呼び出し
-		} else {
-			writeCSV("InOutTime.csv", IDm, "182C1000", getTime("yyMMdd"), getTime("HH:mm")); // CSVに書き込み
-			cardReader.setIDm(""); // 読み取ったIDmをリセット
-			Main.getInstance().setPage("InPage.fxml");
-		}
-	}
-
-	// 履歴ボタンクリック時
-	@FXML
-	void onHistoryButtonClick(ActionEvent event) {
-		System.out.println("debug historyButton");
-	}
-
-	// トップに戻るボタンクリック時
-	@FXML
-	void onReturnButtonClick(ActionEvent event) {
-		cardReader.setIDm(""); // 読み取ったIDmをリセット
-		Main.getInstance().setPage("TopPage.fxml");
-	}
-
-	// エラーウィンドウにて「読み直す」ボタンをクリックしたとき
-	@FXML
-	void onRereadButtonClick(ActionEvent event) {
-		button_reread.getScene().getWindow().hide(); // ウィンドウを非表示にする
-	}
+public class Utilities {
 
 	// 時計を動かす
+	// 引数：時計のラベル
 	void runClock(Label label_clock) {
 		// 100ミリ秒ごとに更新する
 		Timeline clock = new Timeline(new KeyFrame(Duration.millis(100), new EventHandler<ActionEvent>() {
@@ -79,7 +31,7 @@ public class C3BIOSController {
 		clock.play();
 	}
 
-	// 時刻の表示
+	// 時刻を取得
 	// 引数：表示方法．以下を参照
 	// https://docs.oracle.com/javase/jp/8/docs/api/java/text/SimpleDateFormat.html
 	String getTime(String pattern) {
@@ -110,35 +62,14 @@ public class C3BIOSController {
 
 	// 学籍番号のアルファベットを数字に置き換えて整数を返す
 	// 一応 A から E まで変換しているが，C だけでいいかも
-	int replaceAlphabetToInteger(String studentID) {
+	// 引数：学籍番号の文字列
+	private int replaceAlphabetToInteger(String studentID) {
 		studentID = studentID.replace("A", "1"); // A を 1 に置き換え
 		studentID = studentID.replace("B", "2"); // B を 2 に置き換え
 		studentID = studentID.replace("C", "3"); // C を 3 に置き換え
 		studentID = studentID.replace("D", "4"); // D を 4 に置き換え
 		studentID = studentID.replace("E", "5"); // E を 5 に置き換え
 		return Integer.parseInt(studentID);
-	}
-
-	// ラベルにIDmを表示
-	// メッセージを変更するため，メッセージ用のラベルも渡している．
-	void setIDmLabel(Label label_IDm, Label label_message) {
-		Timeline timeline = new Timeline(new KeyFrame(Duration.millis(100), new EventHandler<ActionEvent>() {
-			@Override
-			public void handle(ActionEvent event) {
-				IDm = cardReader.getIDm();
-				// IDm表示
-				label_IDm.setText(IDm);
-				// IDmを読み取ったらメッセージ変更
-				if(IDm == "") {
-					label_message.setText("カードをタッチしてください");
-				} else {
-					label_message.setText("入室ボタンをクリックしてください");
-				}
-			}
-		}));
-
-		timeline.setCycleCount(Timeline.INDEFINITE); // 無限に繰り返す
-		timeline.play();
 	}
 
 }
