@@ -27,6 +27,12 @@ public class Main extends Application {
 			errorPage = new Scene(FXMLLoader.load(getClass().getResource("ErrorPage.fxml")), 500, 400);
 			inputNamePage = new Scene(FXMLLoader.load(getClass().getResource("InputNamePage.fxml")), 500, 400);
 
+			// エラーウィンドウの設定
+			errorStage.initModality(Modality.APPLICATION_MODAL); // モーダルに設定
+			errorStage.initOwner(stage); // 親ウィンドウの設定？
+			errorStage.setScene(errorPage);
+			errorStage.setResizable(false); // ウィンドウサイズ変更不可に設定
+
 			// ページを表示する
 			setPage("TopPage.fxml"); // TopPageを表示する
 			stage.setTitle("C3BIOS"); // タイトル設定
@@ -65,10 +71,6 @@ public class Main extends Application {
 
 	// エラーウィンドウ表示
 	void callErrorWindow(){
-		errorStage.initModality(Modality.APPLICATION_MODAL); // モーダルに設定
-		errorStage.initOwner(stage); // 親ウィンドウの設定？
-		errorStage.setScene(errorPage);
-		errorStage.setResizable(false); // ウィンドウサイズ変更不可に設定
 		errorStage.show();
 	}
 
