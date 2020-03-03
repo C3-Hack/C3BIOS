@@ -24,7 +24,7 @@ public class InputNamePageController {
 			label_warning.setText("名前に \",\" は使えません．");
 		} else {
 			// それ以外はcsvに書き込み
-			utilities.writeCSV("InOutTime.csv", "00 00 00 00 00 00 00 00", "182C1000", username, utilities.getTime("yyMMdd"), utilities.getTime("HH:mm"));
+			utilities.writeCSV("InOutTime.csv", "00 00 00 00 00 00 00 00", "182C1000", username, utilities.getTime("yyMMdd"), utilities.getTime("HHmm"));
 			label_warning.setText("");
 		}
 
