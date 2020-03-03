@@ -25,7 +25,9 @@ public class InputNamePageController {
 		} else {
 			// それ以外はcsvに書き込み
 			utilities.writeCSV("InOutTime.csv", "00 00 00 00 00 00 00 00", "182C1000", username, utilities.getTime("yyMMdd"), utilities.getTime("HHmm"));
-			label_warning.setText("");
+			label_warning.setText(""); // 警告メッセージを初期化
+			textField_name.setText(""); // テキストボックス内のテキストを初期化
+			Main.getInstance().closeErrorWindow();
 		}
 
 	}

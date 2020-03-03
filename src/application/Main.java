@@ -79,6 +79,12 @@ public class Main extends Application {
 		errorStage.setScene(inputNamePage);
 	}
 
+	// エラーウィンドウを非表示にする
+	void closeErrorWindow() {
+		errorStage.close(); // ウィンドウを閉じる
+		errorStage.setScene(errorPage); // エラーページをセット
+	}
+
 
 	// Controller から Main クラスを呼び出す際に使う
 	public static Main getInstance() {
