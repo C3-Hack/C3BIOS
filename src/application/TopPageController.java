@@ -27,7 +27,7 @@ public class TopPageController {
 		utilities.runClock(label_clock);
 		Thread thread = new Thread(cardReader);
 		thread.start();
-		setIDmLabel(label_IDm, label_message);
+		setUserInfoLabel(label_IDm, label_username, label_message);
 	}
 
 	// 入室ボタンクリック時
@@ -62,13 +62,21 @@ public class TopPageController {
 
 	// ラベルにIDmを表示
 	// メッセージを変更するため，メッセージ用のラベルも渡している．
-	void setIDmLabel(Label label_IDm, Label label_message) {
+	void setUserInfoLabel(Label label_IDm, Label label_username, Label label_message) {
 		Timeline timeline = new Timeline(new KeyFrame(Duration.millis(100), new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				topPageIDm = cardReader.getIDm();
-				// IDm表示
-				label_IDm.setText(topPageIDm);
+				topPageIDm = cardReader.getIDm(); // カードリーダーでIDmを読み取り
+				String username = IDmMap.get(topPageIDm); // IDmに対応する名前を取得
+
+				label_IDm.setText(topPageIDm); // IDm表示
+				// 名前を表示．登録されていない場合は空文字列を表示．
+				if(username == null) {
+					label_username.setText("");
+				} else {
+					label_username.setText(username);
+				}
+
 				// IDmを読み取ったらメッセージ変更
 				if(topPageIDm == "") {
 					label_message.setText("カードをタッチしてください");
