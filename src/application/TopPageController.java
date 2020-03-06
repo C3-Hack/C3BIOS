@@ -60,8 +60,7 @@ public class TopPageController {
 		System.out.println("debug historyButton");
 	}
 
-	// ラベルにIDmを表示
-	// メッセージを変更するため，メッセージ用のラベルも渡している．
+	// ラベルにIDm, 名前，メッセージを表示
 	void setUserInfoLabel(Label label_IDm, Label label_username, Label label_message) {
 		Timeline timeline = new Timeline(new KeyFrame(Duration.millis(100), new EventHandler<ActionEvent>() {
 			@Override
