@@ -3,8 +3,14 @@ package application;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -70,6 +76,26 @@ public class Utilities {
 		studentID = studentID.replace("D", "4"); // D を 4 に置き換え
 		studentID = studentID.replace("E", "5"); // E を 5 に置き換え
 		return Integer.parseInt(studentID);
+	}
+
+	// IDmと名前を関連付けたMapを返す
+	// Key   : IDm
+	// Value : 名前
+	Map<String, String> getIDmMap(){
+		Map<String, String> map = new HashMap<>();
+        try {
+            Path file = Paths.get("CSV\\registeredUser.csv"); // ファイルまでのパス
+            List<String> text = Files.readAllLines(file); // ファイルを読み取り，1行ずつリストに入れる
+
+            for(String str : text){
+                map.put(str.split(",")[0], str.split(",")[2]); // MapにIDmと名前を入れる
+            }
+
+        } catch(IOException e){
+            e.printStackTrace();
+        }
+
+        return map;
 	}
 
 }

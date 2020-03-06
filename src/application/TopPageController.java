@@ -1,5 +1,7 @@
 package application;
 
+import java.util.Map;
+
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -12,10 +14,12 @@ public class TopPageController {
 
 	@FXML private Label label_clock;
 	@FXML private Label label_IDm;
+	@FXML private Label label_username;
 	@FXML private Label label_message;
 	private CardReader cardReader = new CardReader();
 	private Utilities utilities = new Utilities();
 	private String topPageIDm = "";
+	private Map<String, String> IDmMap = utilities.getIDmMap(); // IDmと名前を関連付けたMapを取得
 
 	// 最初に呼ばれる
 	public void initialize() {
@@ -29,13 +33,24 @@ public class TopPageController {
 	// 入室ボタンクリック時
 	@FXML
 	void onInButtonClick(ActionEvent event) {
-		topPageIDm = cardReader.getIDm();
-		if(topPageIDm == "") {
+		topPageIDm = cardReader.getIDm(); // カードのIDm読み取り
+		boolean isRegisteredIDm = false; // 登録されているIDmかどうか
+
+		// 読み取ったIDmが登録されているかを調べる
+		for(String str : IDmMap.keySet()) {
+			if(str.equals(topPageIDm)) {
+				isRegisteredIDm = true;
+				break;
+			}
+		}
+
+		// IDmが登録されていなければエラーウィンドウを表示
+		if(!isRegisteredIDm) {
 			Main.getInstance().callErrorWindow(); // エラーウィンドウ呼び出し
 		} else {
-			utilities.writeCSV("InOutTime.csv", topPageIDm, "182C1000", "ほげほげ太郎", utilities.getTime("yyMMdd"), utilities.getTime("HHmm")); // CSVに書き込み
+			utilities.writeCSV("InOutTime.csv", topPageIDm, "182C1000", IDmMap.get(topPageIDm), utilities.getTime("yyMMdd"), utilities.getTime("HHmm")); // CSVに書き込み
 			cardReader.setIDm(""); // 読み取ったIDmをリセット
-			Main.getInstance().setPage("InPage.fxml");
+			Main.getInstance().setPage("InPage.fxml"); // 入室ページへ遷移
 		}
 	}
 
