@@ -12,10 +12,12 @@ public class Main extends Application {
 	public static Main main_class;
 	private Stage stage;
 	private Stage errorStage = new Stage();
+	private Stage historyStage = new Stage();
 	private Scene topPage;
 	private Scene inPage;
 	private Scene errorPage;
 	private Scene inputNamePage;
+	private Scene historyPage;
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -26,6 +28,7 @@ public class Main extends Application {
 			inPage = new Scene(FXMLLoader.load(getClass().getResource("InPage.fxml")), 600, 600);
 			errorPage = new Scene(FXMLLoader.load(getClass().getResource("ErrorPage.fxml")), 500, 400);
 			inputNamePage = new Scene(FXMLLoader.load(getClass().getResource("InputNamePage.fxml")), 500, 400);
+			historyPage = new Scene(FXMLLoader.load(getClass().getResource("HistoryPage.fxml")), 1000, 800);
 
 			// エラーウィンドウの設定
 			errorStage.initModality(Modality.APPLICATION_MODAL); // モーダルに設定
@@ -83,6 +86,12 @@ public class Main extends Application {
 	void closeErrorWindow() {
 		errorStage.close(); // ウィンドウを閉じる
 		errorStage.setScene(errorPage); // エラーページをセット
+	}
+
+	// 履歴ウィンドウ表示
+	void showHistoryWindow() {
+		historyStage.setScene(historyPage);
+		historyStage.show();
 	}
 
 
