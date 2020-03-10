@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="application.HistoryPageController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="application.HistoryPageController">
    <top>
       <Pane prefHeight="80.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="464.0" layoutY="18.0" text="履歴">
+            <Label layoutX="364.0" layoutY="18.0" text="履歴">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>
@@ -24,20 +23,147 @@
    <center>
       <Pane prefHeight="720.0" prefWidth="262.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="button_exit" layoutX="60.0" layoutY="600.0" mnemonicParsing="false" onAction="#onExitButtonClick" text="終了">
+            <Button fx:id="button_exit" layoutX="110.0" layoutY="400.0" mnemonicParsing="false" onAction="#onExitButtonClick" text="終了">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <ChoiceBox layoutX="25.0" layoutY="176.0" prefWidth="150.0" />
          </children>
       </Pane>
    </center>
    <left>
-      <ScrollPane hbarPolicy="NEVER" prefHeight="720.0" prefWidth="800.0" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
-        </content>
+      <ScrollPane hbarPolicy="NEVER" prefHeight="520.0" prefWidth="500.0" vbarPolicy="ALWAYS" BorderPane.alignment="CENTER">
+         <content>
+            <VBox prefWidth="500.0">
+               <children>
+                  <Label text="182C1000, 20/03/10, 12:00">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="182C2000, 20/03/11, 08:00">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="182C3000, 20/03/11, 11:11">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="182C3000, 20/03/11, 11:00">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="182C3000, 20/03/11, 00:11">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="182C3000, 20/03/11, 12:34">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="182C1234, 20/03/11, 11:00">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="182C3000, 20/03/11, 11:11">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="182C3000, 20/03/11, 11:11">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="182C3000, 20/03/11, 11:11">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="182C3000, 20/03/11, 12:34">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="182C1000, 20/03/10, 12:00">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="182C2000, 20/03/11, 08:00">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="182C3000, 20/03/11, 11:00">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="182C3000, 20/03/11, 11:11">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="182C1234, 20/03/11, 11:00">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="182C3000, 20/03/11, 12:34">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="182C3000, 20/03/11, 11:00">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="182C1000, 20/03/10, 12:00">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="182C2000, 20/03/11, 08:00">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="182C3000, 20/03/11, 11:11">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="182C3000, 20/03/11, 11:00">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="182C3000, 20/03/11, 00:11">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="182C3000, 20/03/11, 12:34">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label text="182C1234, 20/03/11, 11:00">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </content>
       </ScrollPane>
    </left>
 </BorderPane>

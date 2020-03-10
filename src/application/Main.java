@@ -28,13 +28,16 @@ public class Main extends Application {
 			inPage = new Scene(FXMLLoader.load(getClass().getResource("InPage.fxml")), 600, 600);
 			errorPage = new Scene(FXMLLoader.load(getClass().getResource("ErrorPage.fxml")), 500, 400);
 			inputNamePage = new Scene(FXMLLoader.load(getClass().getResource("InputNamePage.fxml")), 500, 400);
-			historyPage = new Scene(FXMLLoader.load(getClass().getResource("HistoryPage.fxml")), 1000, 800);
+			historyPage = new Scene(FXMLLoader.load(getClass().getResource("HistoryPage.fxml")), 800, 600);
 
 			// エラーウィンドウの設定
 			errorStage.initModality(Modality.APPLICATION_MODAL); // モーダルに設定
 			errorStage.initOwner(stage); // 親ウィンドウの設定？
 			errorStage.setScene(errorPage);
 			errorStage.setResizable(false); // ウィンドウサイズ変更不可に設定
+
+			// 履歴ウィンドウの設定
+			historyStage.setResizable(false); // ウィンドウサイズを変更不可に設定
 
 			// ページを表示する
 			setPage("TopPage.fxml"); // TopPageを表示する
