@@ -38,7 +38,7 @@ public class InPageController {
 	// 履歴ボタンクリック時
 	@FXML
 	void onHistoryButtonClick(ActionEvent event) {
-		System.out.println("debug historyButton");
+		Main.getInstance().showHistoryWindow();
 	}
 
 	// ラベルにIDmを表示
