@@ -1,8 +1,17 @@
 package application;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.List;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -10,6 +19,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
 	public static Main main_class;
+	private HistoryPageController historyPageController;
 	private Stage stage;
 	private Stage errorStage = new Stage();
 	private Stage historyStage = new Stage();
@@ -28,7 +38,9 @@ public class Main extends Application {
 			inPage = new Scene(FXMLLoader.load(getClass().getResource("InPage.fxml")), 600, 600);
 			errorPage = new Scene(FXMLLoader.load(getClass().getResource("ErrorPage.fxml")), 500, 400);
 			inputNamePage = new Scene(FXMLLoader.load(getClass().getResource("InputNamePage.fxml")), 500, 400);
-			historyPage = new Scene(FXMLLoader.load(getClass().getResource("HistoryPage.fxml")), 800, 600);
+			FXMLLoader fxmlLoaderOfHistoryPage = new FXMLLoader(getClass().getResource("HistoryPage.fxml"));
+			historyPage = new Scene(fxmlLoaderOfHistoryPage.load());
+			historyPageController = fxmlLoaderOfHistoryPage.getController();
 
 			// エラーウィンドウの設定
 			errorStage.initModality(Modality.APPLICATION_MODAL); // モーダルに設定
@@ -93,6 +105,36 @@ public class Main extends Application {
 
 	// 履歴ウィンドウ表示
 	void showHistoryWindow() {
+		VBox vbox = historyPageController.getVBox();
+		vbox.getChildren().clear(); // VBox内の要素を削除
+
+		// csvファイルを読み取って，各行の内容をVBoxとLabelで表示
+		try {
+            Path file = Paths.get("CSV\\InOutTime.csv"); // ファイルまでのパス
+            List<String> text = Files.readAllLines(file); // ファイルを読み取り，1行ずつリストに入れる
+
+            // 読み取ったcsvの各行に対して実行
+            for(String str : text){
+            	// 表示するテキストの準備
+            	String splitedText[] = str.split(","); // 各カラムを分けて配列に格納
+            	String showText = "";
+            	for(int i = 1; i < splitedText.length; i++) {
+            		showText += splitedText[i]; // IDm以外の情報を表示する
+            		if(i != splitedText.length - 1) {
+            			showText += ", "; // 各情報の間にコンマを入れる
+            		}
+            	}
+
+            	// 表示するラベルの準備
+            	Label row = new Label(showText); // 各行の表示用のラベル
+            	row.setFont(new Font(24)); // フォントサイズ24
+            	vbox.getChildren().add(row); // ラベルをVBoxに入れる
+            }
+
+        } catch(IOException e){
+            e.printStackTrace();
+        }
+
 		historyStage.setScene(historyPage);
 		historyStage.show();
 	}
