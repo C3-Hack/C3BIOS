@@ -21,7 +21,7 @@
    <center>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="button_reread" layoutX="44.0" layoutY="194.0" mnemonicParsing="false" onAction="#onRereadButtonClick" prefHeight="40.0" prefWidth="200.0" text="読み取り直す">
+            <Button fx:id="button_reread" layoutX="44.0" layoutY="194.0" mnemonicParsing="false" onAction="#onRereadButtonClick" prefHeight="40.0" prefWidth="130.0" text="再読取り">
                <font>
                   <Font name="MS Gothic" size="24.0" />
                </font>
@@ -31,7 +31,12 @@
                   <Font name="MS Gothic" size="24.0" />
                </font>
             </Label>
-            <Button layoutX="256.0" layoutY="194.0" mnemonicParsing="false" onAction="#onInputNameButtonClick" prefHeight="40.0" prefWidth="200.0" text="名前を入力する">
+            <Button layoutX="185.0" layoutY="194.0" mnemonicParsing="false" onAction="#onInputNameButtonClick" prefHeight="40.0" prefWidth="130.0" text="名前入力">
+               <font>
+                  <Font name="MS Gothic" size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="button_IDregister" layoutX="326.0" layoutY="194.0" mnemonicParsing="false" onAction="#onIDRegisterButtonClick" prefHeight="40.0" prefWidth="130.0" text="ID登録">
                <font>
                   <Font name="MS Gothic" size="24.0" />
                </font>

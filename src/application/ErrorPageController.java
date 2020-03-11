@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 public class ErrorPageController {
 
 	@FXML private Button button_reread;
+	@FXML private Button button_IDregister;
 
 	// 「読み直す」ボタンをクリックしたとき
 	@FXML
@@ -18,5 +19,17 @@ public class ErrorPageController {
 	@FXML
 	void onInputNameButtonClick(ActionEvent event) {
 		Main.getInstance().setInputNamePage();
+	}
+
+	// 「ID登録」ボタンをクリックしたとき
+	@FXML
+	void onIDRegisterButtonClick(ActionEvent event) {
+		Runtime runtime = Runtime.getRuntime();
+		try {
+			runtime.exec("cmd /c notepad"); // とりあえずメモ帳を起動してみる
+			button_IDregister.getScene().getWindow().hide(); // ウィンドウを閉じる
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
