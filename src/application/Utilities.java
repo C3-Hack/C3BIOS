@@ -37,12 +37,14 @@ public class Utilities {
 		clock.play();
 	}
 
+
 	// 時刻を取得
 	// 引数：表示方法．以下を参照
 	// https://docs.oracle.com/javase/jp/8/docs/api/java/text/SimpleDateFormat.html
 	String getTime(String pattern) {
 		return new SimpleDateFormat(pattern).format(new Date());
 	}
+
 
 	// CSV書き出し
 	// 引数：ファイル名，カードのIDm，学籍番号，利用者の名前，日付，時間
@@ -66,6 +68,7 @@ public class Utilities {
         }
 	}
 
+
 	// 学籍番号のアルファベットを数字に置き換えて整数を返す
 	// 一応 A から E まで変換しているが，C だけでいいかも
 	// 引数：学籍番号の文字列
@@ -77,6 +80,7 @@ public class Utilities {
 		studentID = studentID.replace("E", "5"); // E を 5 に置き換え
 		return Integer.parseInt(studentID);
 	}
+
 
 	// IDmと名前を関連付けたMapを返す
 	// Key   : IDm
@@ -96,6 +100,27 @@ public class Utilities {
         }
 
         return map;
+	}
+
+
+	// 読み取ったIDmをdatファイルに出力
+	void outputIDm(String IDm) {
+		try {
+			String dirName = "data";
+			File dir = new File(dirName);
+
+			// dataディレクトリがない場合
+			if(!dir.exists()) {
+				dir.mkdir(); // dataディレクトリ作成
+			}
+
+			String filepath = dirName + "\\IDm.dat";
+			FileWriter fw = new FileWriter(filepath); // 上書きモードでファイルに出力
+			fw.write(IDm);
+			fw.close();
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

@@ -8,6 +8,13 @@ public class ErrorPageController {
 
 	@FXML private Button button_reread;
 	@FXML private Button button_IDregister;
+	private CardReader cardReader = new CardReader();
+	private Utilities utilities = new Utilities();
+
+	public void initialize() {
+		Thread thread = new Thread(cardReader);
+		thread.start();
+	}
 
 	// 「読み直す」ボタンをクリックしたとき
 	@FXML
@@ -26,6 +33,7 @@ public class ErrorPageController {
 	void onIDRegisterButtonClick(ActionEvent event) {
 		Runtime runtime = Runtime.getRuntime();
 		try {
+			utilities.outputIDm(cardReader.getIDm()); // datファイルにIDmを出力
 			runtime.exec("cmd /c notepad"); // とりあえずメモ帳を起動してみる
 			button_IDregister.getScene().getWindow().hide(); // ウィンドウを閉じる
 		} catch(Exception e) {
