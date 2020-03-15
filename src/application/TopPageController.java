@@ -19,7 +19,8 @@ public class TopPageController {
 	private CardReader cardReader = new CardReader();
 	private Utilities utilities = new Utilities();
 	private String topPageIDm = "";
-	private Map<String, String> IDmMap = utilities.getIDmMap(); // IDmと名前を関連付けたMapを取得
+	private Map<String, String> IDmAndStudentIDMap = utilities.getIDmMap(1); // IDmと学籍番号を関連付けたMapを取得
+	private Map<String, String> IDmAndNameMap = utilities.getIDmMap(2); // IDmと名前を関連付けたMapを取得
 
 	// 最初に呼ばれる
 	public void initialize() {
@@ -37,7 +38,7 @@ public class TopPageController {
 		boolean isRegisteredIDm = false; // 登録されているIDmかどうか
 
 		// 読み取ったIDmが登録されているかを調べる
-		for(String str : IDmMap.keySet()) {
+		for(String str : IDmAndNameMap.keySet()) {
 			if(str.equals(topPageIDm)) {
 				isRegisteredIDm = true;
 				break;
@@ -48,7 +49,7 @@ public class TopPageController {
 		if(!isRegisteredIDm) {
 			Main.getInstance().callErrorWindow(); // エラーウィンドウ呼び出し
 		} else {
-			utilities.writeCSV("InOutTime.csv", topPageIDm, "182C1000", IDmMap.get(topPageIDm), utilities.getTime("yyMMdd"), utilities.getTime("HHmm")); // CSVに書き込み
+			utilities.writeCSV("InOutTime.csv", topPageIDm, IDmAndStudentIDMap.get(topPageIDm), IDmAndNameMap.get(topPageIDm), utilities.getTime("yyMMdd"), utilities.getTime("HHmm")); // CSVに書き込み
 			cardReader.setIDm(""); // 読み取ったIDmをリセット
 			Main.getInstance().setPage("InPage.fxml"); // 入室ページへ遷移
 		}
@@ -66,7 +67,7 @@ public class TopPageController {
 			@Override
 			public void handle(ActionEvent event) {
 				topPageIDm = cardReader.getIDm(); // カードリーダーでIDmを読み取り
-				String username = IDmMap.get(topPageIDm); // IDmに対応する名前を取得
+				String username = IDmAndNameMap.get(topPageIDm); // IDmに対応する名前を取得
 
 				label_IDm.setText(topPageIDm); // IDm表示
 				// 名前を表示．登録されていない場合は空文字列を表示．

@@ -82,24 +82,37 @@ public class Utilities {
 	}
 
 
-	// IDmと名前を関連付けたMapを返す
-	// Key   : IDm
-	// Value : 名前
-	Map<String, String> getIDmMap(){
+	// 登録情報を読み，IDmと，名前または学籍番号を関連付けたMapを返す
+	// 引数  ：整数．1→学籍番号と関連付ける．2→名前と関連付ける．その他→null
+	// 返り値：関連付けたMapを返す．Key: IDm / Value: 名前または学籍番号
+	Map<String, String> getIDmMap(int number){
+		// 引数が1または2でない場合はnullを返す
+		if(!(number == 1 || number == 2)) {
+			return null;
+		}
+
 		Map<String, String> map = new HashMap<>();
-        try {
-            Path file = Paths.get("CSV\\registeredUser.csv"); // ファイルまでのパス
-            List<String> text = Files.readAllLines(file); // ファイルを読み取り，1行ずつリストに入れる
+		List<String> text = readCSV("CSV\\registeredUser.csv");
 
-            for(String str : text){
-                map.put(str.split(",")[0], str.split(",")[2]); // MapにIDmと名前を入れる
-            }
+		for(String str : text) {
+			map.put(str.split(",")[0], str.split(",")[number]); // MapにIDmと，名前または学籍番号を入れる
+		}
 
-        } catch(IOException e){
-            e.printStackTrace();
-        }
+		return map;
+	}
 
-        return map;
+
+	// csvファイルを読み取り，各行を要素とするリストを返す
+	private List<String> readCSV(String filepath){
+		try {
+			Path file = Paths.get(filepath); // ファイルまでのパス
+			return Files.readAllLines(file); // ファイルを読み取り，1行ずつリストに入れる
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+
+		return null; // 読み取れなかったらnullを返す
+
 	}
 
 
