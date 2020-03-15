@@ -30,7 +30,7 @@ public class InputNamePageController {
 			label_warning.setText("名前に \",\" は使えません．");
 		} else {
 			// それ以外はcsvに書き込み
-			utilities.writeCSV("InOutTime.csv", cardReader.getIDm(), "182C1000", username, utilities.getTime("yyMMdd"), utilities.getTime("HHmm"));
+			utilities.writeCSV("InOutTime.csv", cardReader.getIDm(), "00000000", username, utilities.getTime("yyMMdd"), utilities.getTime("HHmm"));
 			label_warning.setText(""); // 警告メッセージを初期化
 			textField_name.setText(""); // テキストボックス内のテキストを初期化
 			Main.getInstance().closeErrorWindow();
