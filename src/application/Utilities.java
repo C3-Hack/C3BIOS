@@ -1,8 +1,12 @@
 package application;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -60,9 +64,11 @@ public class Utilities {
 			}
 
 			String filepath = dirName + "\\" + fileName; // csvファイルまでの相対パス
-            FileWriter fw = new FileWriter(filepath, true); // ファイルに追記モードで書き込みを行う
-            fw.write(cardID + "," + replaceAlphabetToInteger(studentID) + "," + userName + "," + date + "," + time + "\n"); // ファイルに書き込み
-            fw.close(); // ファイルを閉じる
+			// ファイルに追記モードで書き込みを行う
+            PrintWriter pw = new PrintWriter(new BufferedWriter(new OutputStreamWriter(new FileOutputStream(filepath, true), "utf-8")));
+
+            pw.println(cardID + "," + replaceAlphabetToInteger(studentID) + "," + userName + "," + date + "," + time); // ファイルに書き込み
+            pw.close();
         } catch(IOException e){
             e.printStackTrace();
         }
