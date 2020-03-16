@@ -103,7 +103,7 @@ public class Utilities {
 
 
 	// csvファイルを読み取り，各行を要素とするリストを返す
-	private List<String> readCSV(String filepath){
+	List<String> readCSV(String filepath){
 		try {
 			Path file = Paths.get(filepath); // ファイルまでのパス
 			return Files.readAllLines(file); // ファイルを読み取り，1行ずつリストに入れる

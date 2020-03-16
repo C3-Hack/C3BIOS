@@ -1,9 +1,5 @@
 package application;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
 
 import javafx.application.Application;
@@ -20,6 +16,7 @@ public class Main extends Application {
 
 	public static Main main_class;
 	private HistoryPageController historyPageController;
+	private Utilities utilities = new Utilities();
 	private Stage stage;
 	private Stage errorStage = new Stage();
 	private Stage historyStage = new Stage();
@@ -109,32 +106,27 @@ public class Main extends Application {
 	void showHistoryWindow() {
 		VBox vbox = historyPageController.getVBox();
 		vbox.getChildren().clear(); // VBox内の要素を削除
+		List<String> text = utilities.readCSV("CSV\\InOutTime.csv"); // InOutTime.csvを読み取り，リストに入れる．
 
-		// csvファイルを読み取って，各行の内容をVBoxとLabelで表示
-		try {
-            Path file = Paths.get("CSV\\InOutTime.csv"); // ファイルまでのパス
-            List<String> text = Files.readAllLines(file); // ファイルを読み取り，1行ずつリストに入れる
+		// 読み取ったcsvの各行に対して実行
+        for(String str : text){
 
-            // 読み取ったcsvの各行に対して実行
-            for(String str : text){
-            	// 表示するテキストの準備
-            	String splitedText[] = str.split(","); // 各カラムを分けて配列に格納
-            	String showText = "";
-            	for(int i = 1; i < splitedText.length; i++) {
-            		showText += splitedText[i]; // IDm以外の情報を表示する
-            		if(i != splitedText.length - 1) {
-            			showText += ", "; // 各情報の間にコンマを入れる
-            		}
-            	}
+        	// 表示するテキストの準備
+        	String splitedText[] = str.split(","); // 各カラムを分けて配列に格納
+        	String showText = ""; // 表示するテキスト
 
-            	// 表示するラベルの準備
-            	Label row = new Label(showText); // 各行の表示用のラベル
-            	row.setFont(new Font(24)); // フォントサイズ24
-            	vbox.getChildren().add(row); // ラベルをVBoxに入れる
-            }
+        	for(int i = 1; i < splitedText.length; i++) {
+        		showText += splitedText[i]; // IDm以外の情報を表示する
 
-        } catch(IOException e){
-            e.printStackTrace();
+        		if(i != splitedText.length - 1) {
+        			showText += ", "; // 各情報の間にコンマを入れる
+        		}
+        	}
+
+        	// 表示するラベルの準備
+        	Label row = new Label(showText); // 各行の表示用のラベル
+        	row.setFont(new Font(24)); // フォントサイズ24
+        	vbox.getChildren().add(row); // ラベルをVBoxに入れる
         }
 
 		historyStage.setScene(historyPage);

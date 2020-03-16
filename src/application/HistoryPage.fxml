@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="application.HistoryPageController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.HistoryPageController">
    <top>
       <Pane prefHeight="80.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
@@ -29,7 +29,7 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
-            <ChoiceBox fx:id="choicebox_studentID" layoutX="70.0" layoutY="116.0" prefHeight="35.0" prefWidth="160.0" />
+            <ChoiceBox fx:id="choicebox_studentID" layoutX="75.0" layoutY="117.0" prefHeight="35.0" prefWidth="150.0" />
             <Button layoutX="116.0" layoutY="199.0" mnemonicParsing="false" text="更新">
                <font>
                   <Font name="System Bold" size="20.0" />
