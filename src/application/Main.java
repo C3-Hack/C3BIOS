@@ -103,7 +103,9 @@ public class Main extends Application {
 	}
 
 	// 履歴ウィンドウ表示
-	void showHistoryWindow() {
+	// 引数：String 学籍番号．
+	// 引数で与えられた学籍番号と一致する情報のみ表示する．全部表示する場合は "全て表示" を入れる．
+	void showHistoryWindow(String studentID) {
 		VBox vbox = historyPageController.getVBox();
 		vbox.getChildren().clear(); // VBox内の要素を削除
 		List<String> text = utilities.readCSV("CSV\\InOutTime.csv"); // InOutTime.csvを読み取り，リストに入れる．
@@ -112,15 +114,23 @@ public class Main extends Application {
         for(String str : text){
 
         	// 表示するテキストの準備
-        	String splitedText[] = str.split(","); // 各カラムを分けて配列に格納
+
+        	// 各カラムを分けて配列に格納
+        	// 0:IDm, 1:学籍番号, 2:名前, 3:年月日, 4:時刻
+        	String splitedText[] = str.split(",");
         	String showText = ""; // 表示するテキスト
 
-        	for(int i = 1; i < splitedText.length; i++) {
-        		showText += splitedText[i]; // IDm以外の情報を表示する
+        	// 学籍番号が一致する場合のみ表示
+        	if(studentID.equals("全て表示") || studentID.equals(splitedText[1])) {
+        		for(int i = 1; i < splitedText.length; i++) {
+            		showText += splitedText[i]; // IDm以外の情報を表示する
 
-        		if(i != splitedText.length - 1) {
-        			showText += ", "; // 各情報の間にコンマを入れる
-        		}
+            		if(i != splitedText.length - 1) {
+            			showText += ", "; // 各情報の間にコンマを入れる
+            		}
+            	}
+        	} else {
+        		continue;
         	}
 
         	// 表示するラベルの準備

@@ -33,6 +33,13 @@ public class HistoryPageController{
 		button_exit.getScene().getWindow().hide(); // ウィンドウを閉じる
 	}
 
+	// 更新ボタンをクリックしたとき
+	@FXML
+	void onReloadButtonClick(ActionEvent event) {
+		// 選択されている学籍番号の人の履歴のみ表示
+		Main.getInstance().showHistoryWindow(choicebox_studentID.getValue());
+	}
+
 	// VBoxを返す
 	public VBox getVBox() {
 		return vbox_history;

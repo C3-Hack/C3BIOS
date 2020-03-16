@@ -58,7 +58,7 @@ public class TopPageController {
 	// 履歴ボタンクリック時
 	@FXML
 	void onHistoryButtonClick(ActionEvent event) {
-		Main.getInstance().showHistoryWindow();
+		Main.getInstance().showHistoryWindow("全て表示");
 	}
 
 	// ラベルにIDm, 名前，メッセージを表示
