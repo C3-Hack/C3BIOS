@@ -35,6 +35,16 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Button>
+            <Label fx:id="label_showing" layoutX="150.0" layoutY="42.0" text="全て表示">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="54.0" layoutY="42.0" text="表示中：">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </center>
