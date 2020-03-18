@@ -5,6 +5,7 @@ import java.util.List;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
@@ -107,7 +108,20 @@ public class Main extends Application {
 	// 引数：String 学籍番号．
 	// 引数で与えられた学籍番号と一致する情報のみ表示する．全部表示する場合は "全て表示" を入れる．
 	void showHistoryWindow(String studentID) {
+		Label label_showing = historyPageController.getLabelShowing();
+		ChoiceBox<String> choicebox_studentID = historyPageController.getChoiceBox();
 		VBox vbox = historyPageController.getVBox();
+
+		// 引数の学籍番号とラベルの学籍番号が違う場合，ラベルに引数の学籍番号をセット
+		if(!label_showing.getText().equals(studentID)) {
+			label_showing.setText(studentID);
+		}
+
+		// 引数の学籍番号と ChoiceBox の学籍番号が違う場合，引数の学籍番号を ChoiceBox にセット
+		if(!choicebox_studentID.getValue().equals(studentID)) {
+			choicebox_studentID.setValue(studentID);
+		}
+
 		vbox.getChildren().clear(); // VBox内の要素を削除
 		List<String> text = utilities.readCSV("CSV\\InOutTime.csv"); // InOutTime.csvを読み取り，リストに入れる．
 

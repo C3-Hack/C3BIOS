@@ -51,4 +51,14 @@ public class HistoryPageController{
 	public VBox getVBox() {
 		return vbox_history;
 	}
+
+	// label_showingを返す
+	public Label getLabelShowing() {
+		return label_showing;
+	}
+
+	// choiceboxを返す
+	public ChoiceBox<String> getChoiceBox() {
+		return choicebox_studentID;
+	}
 }
