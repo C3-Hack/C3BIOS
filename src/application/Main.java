@@ -88,6 +88,7 @@ public class Main extends Application {
 
 	// エラーウィンドウ表示
 	void callErrorWindow(){
+		errorStage.setScene(errorPage);
 		errorStage.show();
 	}
 
