@@ -34,6 +34,9 @@ public class HistoryPageController{
 	// 終了ボタンをクリックしたとき
 	@FXML
 	void onExitButtonClick(ActionEvent event) {
+		// 終了時，"全て表示" に戻しておく
+		choicebox_studentID.setValue("全て表示");
+		label_showing.setText("全て表示");
 		button_exit.getScene().getWindow().hide(); // ウィンドウを閉じる
 	}
 
