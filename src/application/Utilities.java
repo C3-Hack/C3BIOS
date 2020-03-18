@@ -135,7 +135,7 @@ public class Utilities {
 				dir.mkdir(); // dataディレクトリ作成
 			}
 
-			String filepath = dirName + "\\IDm.dat";
+			String filepath = dirName + "\\IDm.csv";
 			FileWriter fw = new FileWriter(filepath); // 上書きモードでファイルに出力
 			fw.write(IDm);
 			fw.close();

@@ -34,7 +34,7 @@ public class ErrorPageController {
 		Runtime runtime = Runtime.getRuntime();
 		try {
 			utilities.outputIDm(cardReader.getIDm()); // datファイルにIDmを出力
-			runtime.exec("cmd /c notepad"); // とりあえずメモ帳を起動してみる
+			runtime.exec("cmd /c Register1.py"); // とりあえずメモ帳を起動してみる
 			button_IDregister.getScene().getWindow().hide(); // ウィンドウを閉じる
 		} catch(Exception e) {
 			e.printStackTrace();
