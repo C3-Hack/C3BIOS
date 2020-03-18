@@ -26,7 +26,7 @@
                   <Font name="MS Gothic" size="24.0" />
                </font>
             </Button>
-            <Label alignment="TOP_CENTER" layoutX="44.0" layoutY="40.0" prefHeight="97.0" prefWidth="412.0" text="そのIDは登録されていません．&#10;登録されているカードを読み込むか，&#10;名前を入力してください．">
+            <Label alignment="TOP_CENTER" layoutX="38.0" layoutY="14.0" prefHeight="163.0" prefWidth="412.0" text="そのカードは登録されていません．&#10;&#10;「再読取り」→前のページに戻る&#10;「名前入力」→このカードで入室&#10;「ID登録」  →このカードを登録">
                <font>
                   <Font name="MS Gothic" size="24.0" />
                </font>
