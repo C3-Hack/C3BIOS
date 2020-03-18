@@ -67,7 +67,8 @@ public class Utilities {
 			// ファイルに追記モードで書き込みを行う
             PrintWriter pw = new PrintWriter(new BufferedWriter(new OutputStreamWriter(new FileOutputStream(filepath, true), "utf-8")));
 
-            pw.println(cardID + "," + replaceAlphabetToInteger(studentID) + "," + userName + "," + date + "," + time); // ファイルに書き込み
+            //pw.println(cardID + "," + replaceAlphabetToInteger(studentID) + "," + userName + "," + date + "," + time); // ファイルに書き込み
+            pw.println(cardID + "," + studentID + "," + userName + "," + date + "," + time); // ファイルに書き込み．学籍番号は文字列で．
             pw.close();
         } catch(IOException e){
             e.printStackTrace();
@@ -75,6 +76,7 @@ public class Utilities {
 	}
 
 
+	/*
 	// 学籍番号のアルファベットを数字に置き換えて整数を返す
 	// 一応 A から E まで変換しているが，C だけでいいかも
 	// 引数：学籍番号の文字列
@@ -85,7 +87,7 @@ public class Utilities {
 		studentID = studentID.replace("D", "4"); // D を 4 に置き換え
 		studentID = studentID.replace("E", "5"); // E を 5 に置き換え
 		return Integer.parseInt(studentID);
-	}
+	}*/
 
 
 	// 登録情報を読み，IDmと，名前または学籍番号を関連付けたMapを返す
