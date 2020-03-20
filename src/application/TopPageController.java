@@ -35,6 +35,8 @@ public class TopPageController {
 	@FXML
 	void onInButtonClick(ActionEvent event) {
 		topPageIDm = cardReader.getIDm(); // カードのIDm読み取り
+		IDmAndStudentIDMap = utilities.getIDmMap(1); // IDmと学籍番号のMapを更新
+		IDmAndNameMap = utilities.getIDmMap(2); // IDmと名前のMapを更新
 		boolean isRegisteredIDm = false; // 登録されているIDmかどうか
 
 		// 読み取ったIDmが登録されているかを調べる
@@ -67,6 +69,7 @@ public class TopPageController {
 			@Override
 			public void handle(ActionEvent event) {
 				topPageIDm = cardReader.getIDm(); // カードリーダーでIDmを読み取り
+				IDmAndNameMap = utilities.getIDmMap(2); // IDmと名前のMapを更新
 				String username = IDmAndNameMap.get(topPageIDm); // IDmに対応する名前を取得
 
 				label_IDm.setText(topPageIDm); // IDm表示
