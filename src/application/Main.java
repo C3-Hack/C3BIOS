@@ -108,6 +108,9 @@ public class Main extends Application {
 	// 引数：String 学籍番号．
 	// 引数で与えられた学籍番号と一致する情報のみ表示する．全部表示する場合は "全て表示" を入れる．
 	void showHistoryWindow(String studentID) {
+		// ChoiceBoxの選択肢の更新
+		historyPageController.updateChoiceBox();
+
 		Label label_showing = historyPageController.getLabelShowing();
 		ChoiceBox<String> choicebox_studentID = historyPageController.getChoiceBox();
 		VBox vbox = historyPageController.getVBox();

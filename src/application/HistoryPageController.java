@@ -19,9 +19,9 @@ public class HistoryPageController{
 	@FXML private ChoiceBox<String> choicebox_studentID;
 	private Utilities utilities = new Utilities();
 	private Map<String, String> IDmAndStudentIDMap = utilities.getIDmMap(1); // IDmと学籍番号を関連付けたMapを取得
+	List<String> studentIDs = new ArrayList<String>(); // ChoiceBox内に入れる学籍番号のリスト
 
 	public void initialize() {
-		List<String> studentIDs = new ArrayList<String>(); // ChoiceBox内に入れる学籍番号のリスト
 		studentIDs.add("全て表示"); // 全て表示するためのもの
 		studentIDs.addAll(IDmAndStudentIDMap.values()); // 登録されている学籍番号を取得し，リストに入れる
 
@@ -45,6 +45,22 @@ public class HistoryPageController{
 	void onReloadButtonClick(ActionEvent event) {
 		label_showing.setText(choicebox_studentID.getValue()); // 表示中の学籍番号をラベルに表示
 		Main.getInstance().showHistoryWindow(choicebox_studentID.getValue()); // 選択されている学籍番号の人の履歴のみ表示
+	}
+
+	// ChoiceBoxの選択肢の更新
+	public void updateChoiceBox() {
+		// IDmと学籍番号のMapの更新
+		IDmAndStudentIDMap = utilities.getIDmMap(1);
+
+		// リストの更新
+		studentIDs.clear();
+		studentIDs.add("全て表示");
+		studentIDs.addAll(IDmAndStudentIDMap.values());
+
+		// ChoiceBoxの選択肢の更新
+		choicebox_studentID.getItems().clear();
+		choicebox_studentID.getItems().addAll(studentIDs);
+		choicebox_studentID.setValue("全て表示");
 	}
 
 	// VBoxを返す
