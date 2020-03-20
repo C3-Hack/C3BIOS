@@ -6,7 +6,7 @@ import pprint
 class Error(wx.Frame):
     def __init__(self, parent):
         ##フレーム
-        wx.Frame.__init__(self, parent, -1, "エラー", pos=(100,100), size=(600,300))
+        wx.Frame.__init__(self, parent, -1, "エラー", pos=(100,100), size=(700,400))
         panel = wx.Panel(self)
 
         ##テキスト
@@ -27,7 +27,7 @@ class tourokuC(wx.Frame):
         ##ファイル読み込み
         with open('CSV/registeredUser.csv', 'r', encoding="utf-8") as file:
             self.lines = file.readlines()
-        row = self.lines[-2].split(',')
+        row = self.lines[-1].split(',')
 
         ##フレーム
         wx.Frame.__init__(self,parent,1,"登録完了",pos=(300,300),size=(600,300))
@@ -43,7 +43,7 @@ class tourokuC(wx.Frame):
         self.SDI_C_text = wx.StaticText(panel,-1, "SID:"+row[1],pos=(50,120))
         self.tourokuCtext = wx.StaticText(panel,-1,"HN:"+row[2].strip("\n"),pos=(50,140))
         ##閉じるボタン
-        self.exitBtn = wx.Button(panel,label="息の根を止める",pos=(500,250))
+        self.exitBtn = wx.Button(panel,label="息の根を止める",pos=(400,200))
         self.Bind(wx.EVT_BUTTON,self.exit,self.exitBtn)
 
     def exit(self,event):
@@ -56,7 +56,7 @@ class Touroku(wx.Frame):
         with open('data/IDm.csv', 'r', encoding="utf-8") as file:
             self.lines=file.readlines()
         ##フレーム
-        wx.Frame.__init__(self,parent,id,"登録画面",size=(600,600))
+        wx.Frame.__init__(self,parent,id,"登録画面",size=(800,600))
         panel = wx.Panel(self)
         panel.SetBackgroundColour('#AFAFAF')
         font = wx.Font(40, wx.FONTFAMILY_DEFAULT,wx.FONTSTYLE_NORMAL, wx.FONTWEIGHT_NORMAL)
@@ -92,7 +92,7 @@ class Touroku(wx.Frame):
         self.studentnumber1 = self.studentnumber.GetValue()
         self.handlename1 = self.handlename.GetValue()
         ## csvの読み込み
-        flag=0
+        flag=1
         with open('CSV/registeredUser.csv', "r", encoding="utf-8") as f:
             reader = csv.reader(f)
             for row in reader:
@@ -115,7 +115,6 @@ class Touroku(wx.Frame):
                 with open('CSV/registeredUser.csv','a', encoding="utf-8", newline="") as f:
                     writer = csv.writer(f)
                     writer.writerow([self.lines[0], self.studentnumber1, self.handlename1])
-                print(self.lines[0], self.studentnumber1, self.handlename1)
                 self.showChild2(self)
 
     def showChild(self,event):

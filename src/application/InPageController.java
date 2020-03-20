@@ -18,7 +18,7 @@ public class InPageController {
 	private Utilities utilities = new Utilities();
 	private CardReader cardReader = new CardReader();
 	private String inPageIDm = "";
-	private Map<String, String> IDmMap = utilities.getIDmMap(2); // IDmと名前を関連付けたMapを取得
+	private Map<String, String> IDmAndNameMap = utilities.getIDmMap(2); // IDmと名前を関連付けたMapを取得
 
 	public void initialize() {
 		label_clock.setText(utilities.getTime("MM/dd HH:mm"));
@@ -47,8 +47,9 @@ public class InPageController {
 			@Override
 			public void handle(ActionEvent event) {
 				inPageIDm = cardReader.getIDm();
+				IDmAndNameMap = utilities.getIDmMap(2); // IDmと名前のMapの更新
 				label_IDm.setText(inPageIDm);// IDm表示
-				label_username.setText(IDmMap.get(inPageIDm)); // 名前を表示．InPageに来た時点でnullにはならないはず．
+				label_username.setText(IDmAndNameMap.get(inPageIDm)); // 名前を表示．InPageに来た時点でnullにはならないはず．
 			}
 		}));
 
