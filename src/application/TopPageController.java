@@ -93,4 +93,10 @@ public class TopPageController {
 		timeline.play();
 	}
 
+	// IDmの文字列を設定する
+	public void setTopPageIDm(String str) {
+		topPageIDm = str; // TopPageController のIDm を設定
+		cardReader.setIDm(str); // CardReader の IDm を設定
+	}
+
 }

@@ -17,6 +17,7 @@ public class Main extends Application {
 
 	public static Main main_class;
 	private HistoryPageController historyPageController;
+	private TopPageController topPageController;
 	private Utilities utilities = new Utilities();
 	private Stage stage;
 	private Stage errorStage = new Stage();
@@ -32,10 +33,15 @@ public class Main extends Application {
 		try {
 			main_class = this;
 			stage = primaryStage;
-			topPage = new Scene(FXMLLoader.load(getClass().getResource("TopPage.fxml")), 600, 600);
+			//topPage = new Scene(FXMLLoader.load(getClass().getResource("TopPage.fxml")), 600, 600);
+			FXMLLoader fxmlLoaderOfTopPage = new FXMLLoader(getClass().getResource("TopPage.fxml"));
+			topPage = new Scene(fxmlLoaderOfTopPage.load());
+			topPageController = fxmlLoaderOfTopPage.getController();
+
 			inPage = new Scene(FXMLLoader.load(getClass().getResource("InPage.fxml")), 600, 600);
 			errorPage = new Scene(FXMLLoader.load(getClass().getResource("ErrorPage.fxml")), 500, 400);
 			inputNamePage = new Scene(FXMLLoader.load(getClass().getResource("InputNamePage.fxml")), 500, 400);
+
 			FXMLLoader fxmlLoaderOfHistoryPage = new FXMLLoader(getClass().getResource("HistoryPage.fxml"));
 			historyPage = new Scene(fxmlLoaderOfHistoryPage.load());
 			historyPageController = fxmlLoaderOfHistoryPage.getController();
@@ -102,6 +108,7 @@ public class Main extends Application {
 	void closeErrorWindow() {
 		errorStage.close(); // ウィンドウを閉じる
 		errorStage.setScene(errorPage); // エラーページをセット
+		topPageController.setTopPageIDm(""); // トップページのIDmを初期化
 	}
 
 	// 履歴ウィンドウ表示

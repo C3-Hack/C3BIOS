@@ -19,7 +19,8 @@ public class ErrorPageController {
 	// 「読み直す」ボタンをクリックしたとき
 	@FXML
 	void onRereadButtonClick(ActionEvent event) {
-		button_reread.getScene().getWindow().hide(); // ウィンドウを非表示にする
+		//button_reread.getScene().getWindow().hide(); // ウィンドウを非表示にする
+		Main.getInstance().closeErrorWindow(); // エラーウィンドウを閉じる
 	}
 
 	// 「名前を入力する」ボタンをクリックしたとき
